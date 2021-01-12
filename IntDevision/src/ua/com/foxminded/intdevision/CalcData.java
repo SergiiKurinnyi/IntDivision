@@ -3,12 +3,12 @@ package ua.com.foxminded.intdevision;
 public class CalcData {
     private int indent;
     private String dividend;
-    private String mem;
+    private String mult;
 
-    public CalcData(int indent, String dividend, String mem) {
+    public CalcData(int indent, String dividend, String mult) {
         this.indent = indent;
         this.dividend = dividend;
-        this.mem = mem;
+        this.mult = mult;
     }
 
     public int getIndent() {
@@ -19,8 +19,8 @@ public class CalcData {
         return dividend;
     }
 
-    public String getMem() {
-        return mem;
+    public String getMult() {
+        return mult;
     }
 
 }
