@@ -7,16 +7,14 @@ public class IntDivision {
 
     private Calculator calculator = new Calculator();
     private Formatter formatter = new Formatter();
+    private DataObject dataObject;
 
-
-    public void intDivision(String dividend, String divisor) {
+    public IntDivision(String dividend, String divisor) {
         checkIsPositiveInt(dividend);
         checkIsPositiveInt(divisor);
-        formatter.setDividend(dividend);
-        formatter.setDivisor(divisor);
 
-        List<CalcData> rawData = new ArrayList<>(calculator.calculateDevision(dividend, divisor));
-        List<String> result = new ArrayList<>(formatter.drawOutput(rawData));
+        dataObject = calculator.calculateDevision(dividend, divisor);
+        List<String> result = new ArrayList<>(formatter.formatOutput(dataObject));
         printData(result);
     }
 

@@ -8,15 +8,9 @@ import java.util.List;
 
 public class Calculator {
 
-    public static int dividend;
-    public static int divisor;
-    public static int ratio;
-
-
-    public List<CalcData> calculateDevision(String dividendInput, String divisorInput) {
-        dividend = parseInt(dividendInput);
-        divisor = parseInt(divisorInput);
-        ratio = dividend / divisor;
+    public DataObject calculateDevision(String dividendInput, String divisorInput) {
+        int dividend = parseInt(dividendInput);
+        int divisor = parseInt(divisorInput);
 
         List<CalcData> dataList = new ArrayList<>();
         int[] dividendDigits = getIntArrayFromString(dividendInput);
@@ -38,9 +32,17 @@ public class Calculator {
             currentDividend = currentDividend % divisor;
         }
         dataList.add(new CalcData(digitCounter, valueOf(currentDividend), ""));
-        return dataList;
+        return createDTO(dataList, dividend, divisor);
     }
 
+    private DataObject createDTO(List<CalcData> dataList, int dividend, int divisor) {
+        DataObject data = new DataObject();
+        data.setDataList(dataList);
+        data.setDividend(dividend);
+        data.setDivisor(divisor);
+        data.setRatio(dividend / divisor);
+        return data;
+    }
 
     private int[] getIntArrayFromString(String number) {
         String[] dividendSymbols = number.split("");

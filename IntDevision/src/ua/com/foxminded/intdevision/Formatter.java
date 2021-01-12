@@ -7,38 +7,29 @@ import static java.lang.String.valueOf;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Formatter {
+public class Formatter implements Formattable {
 
-    public String dividendInput;
-    public String divisorInput;
-    private final String indentLine = "                       ";
-    private final String separateLine = "----------";
-
-    public void setDividend(String dividendInput) {
-        this.dividendInput = dividendInput;
-    }
-
-    public void setDivisor(String divisorInput) {
-        this.divisorInput = divisorInput;
-    }
+    private static final String INDENT_LINE = "                       ";
+    private static final String SEPARATE_LINE = "----------";
 
 
-    public List<String> drawOutput(List<CalcData> data) {
-        int dividend = parseInt(dividendInput);
-        int divisor = parseInt(divisorInput);
-        int ratio = dividend / divisor;
+    public List<String> formatOutput(DataObject dataObject) {
+        int dividend = dataObject.getDividend();
+        int divisor = dataObject.getDivisor();
+        int ratio = dataObject.getRatio();
+        List<CalcData> data = dataObject.getDataList();
 
         List<String> outputList = new ArrayList<>();
-        String ratioLine = separateLine.substring(0, valueOf(ratio).length());
+        String ratioLine = SEPARATE_LINE.substring(0, valueOf(ratio).length());
 
         int lineLength = valueOf(dividend).length() + valueOf(ratio).length() + 2;
         int indent2 = lineLength - (valueOf(data.get(0).getMult()).length() + valueOf(ratio).length() + 2);
         int indent3 = lineLength - (valueOf(data.get(0).getMult()).length() + valueOf(ratio).length() + 2);
 
         String line1 = ("_" + dividend + "|" + divisor);
-        String line2 = format(" %s%s|%s", data.get(0).getMult(), indentLine.substring(0, indent2), ratioLine);
-        String line3 = format(" %s%s|%s", separateLine.substring(0, valueOf(data.get(0).getMult()).length()),
-                indentLine.substring(0, indent3), ratio);
+        String line2 = format(" %s%s|%s", data.get(0).getMult(), INDENT_LINE.substring(0, indent2), ratioLine);
+        String line3 = format(" %s%s|%s", SEPARATE_LINE.substring(0, valueOf(data.get(0).getMult()).length()),
+                INDENT_LINE.substring(0, indent3), ratio);
 
         outputList.add(line1);
         outputList.add(line2);
@@ -70,7 +61,7 @@ public class Formatter {
 
             if (i != data.size() - 1) {
                 outputList.add(format("%" + (indent + 2) + "s",
-                        separateLine.substring(0, valueOf(data.get(i).getDividend()).length())));
+                        SEPARATE_LINE.substring(0, valueOf(data.get(i).getDividend()).length())));
             }
         }
         return outputList;
