@@ -6,8 +6,7 @@ public class DataObject {
     private List<CalcData> dataList;
     private int dividend;
     private int divisor;
-    private int ratio;
-    
+
     public List<CalcData> getDataList() {
         return dataList;
     }
@@ -26,12 +25,6 @@ public class DataObject {
     }
     public void setDivisor(int divisor) {
         this.divisor = divisor;
-    }
-    public int getRatio() {
-        return ratio;
-    }
-    public void setRatio(int ratio) {
-        this.ratio = ratio;
     }
 
 }

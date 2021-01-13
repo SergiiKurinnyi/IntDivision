@@ -40,7 +40,6 @@ public class Calculator {
         data.setDataList(dataList);
         data.setDividend(dividend);
         data.setDivisor(divisor);
-        data.setRatio(dividend / divisor);
         return data;
     }
 

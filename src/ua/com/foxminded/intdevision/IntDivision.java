@@ -6,23 +6,25 @@ import java.util.List;
 public class IntDivision {
 
     private Calculator calculator = new Calculator();
-    private Formatter formatter = new Formatter();
+    private FormatOutput formatter = new FormatOutput();
     private DataObject dataObject;
 
-    public IntDivision(String dividend, String divisor) {
+    public IntDivision() {
+    }
+
+    public IntDivision(Calculator calculator, FormatOutput formatter) {
+        this.calculator = calculator;
+        this.formatter = formatter;
+    }
+
+
+    public List<String> divide(String dividend, String divisor) {
         checkIsPositiveInt(dividend);
         checkIsPositiveInt(divisor);
-
         dataObject = calculator.calculateDevision(dividend, divisor);
-        List<String> result = new ArrayList<>(formatter.formatOutput(dataObject));
-        printData(result);
+        return new ArrayList<>(formatter.formatOutput(dataObject));
     }
 
-    private void printData(List<String> listToPrint) {
-        for (String line : listToPrint) {
-            System.out.println(line);
-        }
-    }
 
     private void checkIsPositiveInt(String number) {
         try {
