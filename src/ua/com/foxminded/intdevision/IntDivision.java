@@ -1,44 +1,27 @@
 package ua.com.foxminded.intdevision;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IntDivision {
 
     private Calculator calculator = new Calculator();
     private FormatOutput formatter = new FormatOutput();
-    private DataObject dataObject;
-
 
     public IntDivision() {
     }
 
-    public IntDivision(FormatOutput formatter) {
+    public IntDivision(Calculator calculator, FormatOutput formatter) {
         this.formatter = formatter;
-    }
-
-    public IntDivision(Calculator calculator) {
         this.calculator = calculator;
     }
 
 
-    public void divide(String dividend, String divisor) {
+    public List<String> divide(String dividend, String divisor) {
         checkIsPositiveInt(dividend);
         checkIsPositiveInt(divisor);
-        dataObject = calculator.calculateDevision(dividend, divisor);
-        formatOutput(dataObject);
-    }
-
-
-    public void formatOutput(DataObject dataObject) {
-        List<String> outputList = formatter.formatOutput(dataObject);
-        printToConsole(outputList);
-    }
-
-
-    public void printToConsole(List<String> outputList) {
-        for (String line : outputList) {
-            System.out.println(line);
-        }
+        DataObject dataObject = calculator.calculateDevision(dividend, divisor);
+        return new ArrayList<>(formatter.formatOutput(dataObject));
     }
 
 
