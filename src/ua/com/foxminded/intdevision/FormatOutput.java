@@ -18,7 +18,6 @@ public class FormatOutput implements Format {
     private static final String STRING_FORMAT_BEFORE_INDENT = "%";
     private static final String STRING_FORMAT_AFTER_INDENT_1VAR = "s";
     private static final String STRING_FORMAT_AFTER_INDENT_2VARS = "s%s";
-    private static List<String> outputList = new ArrayList<>();
 
 
     public List<String> formatOutput(DataObject dataObject) {
@@ -26,6 +25,7 @@ public class FormatOutput implements Format {
         int divisor = dataObject.getDivisor();
         int ratio = dividend / divisor;
         List<CalcData> data = dataObject.getDataList();
+        List<String> outputList = new ArrayList<>();
 
         String ratioLine = SEPARATE_LINE.substring(0, valueOf(ratio).length());
         int lineLength = valueOf(dividend).length() + valueOf(ratio).length() + 2;
@@ -42,12 +42,12 @@ public class FormatOutput implements Format {
         outputList.add(line2);
         outputList.add(line3);
 
-        formatDivisionSteps(data);
+        outputList = formatDivisionSteps(data, outputList);
         return outputList;
     }
 
 
-    private void formatDivisionSteps(List<CalcData> data) {
+    private List<String> formatDivisionSteps(List<CalcData> data, List<String> outputList) {
         int indent = 0;
         for (int i = 1; i < data.size(); i++) {
             indent = data.get(i).getIndent();
@@ -85,6 +85,7 @@ public class FormatOutput implements Format {
                         SEPARATE_LINE.substring(0, valueOf(data.get(i).getDividend()).length())));
             }
         }
+        return outputList;
     }
 
 }

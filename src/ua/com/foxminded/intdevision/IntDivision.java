@@ -1,6 +1,5 @@
 package ua.com.foxminded.intdevision;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class IntDivision {
@@ -9,20 +8,37 @@ public class IntDivision {
     private FormatOutput formatter = new FormatOutput();
     private DataObject dataObject;
 
+
     public IntDivision() {
     }
 
-    public IntDivision(Calculator calculator, FormatOutput formatter) {
-        this.calculator = calculator;
+    public IntDivision(FormatOutput formatter) {
         this.formatter = formatter;
     }
 
+    public IntDivision(Calculator calculator) {
+        this.calculator = calculator;
+    }
 
-    public List<String> divide(String dividend, String divisor) {
+
+    public void divide(String dividend, String divisor) {
         checkIsPositiveInt(dividend);
         checkIsPositiveInt(divisor);
         dataObject = calculator.calculateDevision(dividend, divisor);
-        return new ArrayList<>(formatter.formatOutput(dataObject));
+        formatOutput(dataObject);
+    }
+
+
+    public void formatOutput(DataObject dataObject) {
+        List<String> outputList = formatter.formatOutput(dataObject);
+        printToConsole(outputList);
+    }
+
+
+    public void printToConsole(List<String> outputList) {
+        for (String line : outputList) {
+            System.out.println(line);
+        }
     }
 
 
