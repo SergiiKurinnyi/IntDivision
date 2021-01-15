@@ -26,7 +26,6 @@ class IntDevisionTest {
     private InOrder inOrder;
 
     private static final String EMPTY_INPUT = "";
-    private static String NULL;
     private static final String ZERO_INT = "0";
     private static final String NEGATIVE_INT = "-1";
     private static final String BIG_POSITVE_INT = "1823000002";
@@ -44,26 +43,26 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_ShouldcallCalculateDivisionMethodOnce_IfInputIsPositiveInts() {
+    void intDivision_ShouldcallCalculateDivisionMethodOnce_IfInputIsPositiveInts() {
         intDivisionMock.divide(BIG_POSITVE_INT, SMALL_POSITVE_INT);
         verify(calclulatorMock, times(1)).calculateDevision(BIG_POSITVE_INT, SMALL_POSITVE_INT);
     }
 
     @Test
-    void IntDivision_ShouldcallFormatOutputMethodOnce_IfInputIsPositiveInts() {
+    void intDivision_ShouldcallFormatOutputMethodOnce_IfInputIsPositiveInts() {
         intDivisionMock.divide(BIG_POSITVE_INT, SMALL_POSITVE_INT);
         verify(formatterMock, times(1)).formatOutput(dataObject);
     }
 
     @Test
-    void IntDivision_ShouldcallCalculateDivisionThenFormatOutputMethod_IfInputIsPositiveInts() {
+    void intDivision_ShouldcallCalculateDivisionThenFormatOutputMethod_IfInputIsPositiveInts() {
         intDivisionMock.divide(BIG_POSITVE_INT, SMALL_POSITVE_INT);
         inOrder.verify(calclulatorMock).calculateDevision(BIG_POSITVE_INT, SMALL_POSITVE_INT);
         inOrder.verify(formatterMock).formatOutput(dataObject);
     }
 
     @Test
-    void IntDivision_ShouldThrowIllegalArgumentException_IfEmptyDividend() {
+    void intDivision_ShouldThrowIllegalArgumentException_IfEmptyDividend() {
         String expected = "Input should be digits only & cannot be negative number!";
 
         Exception exception = assertThrows(IllegalArgumentException.class,
@@ -72,7 +71,7 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_ShouldThrowIllegalArgumentException_IfEmptyDivisor() {
+    void intDivision_ShouldThrowIllegalArgumentException_IfEmptyDivisor() {
         String expected = "Input should be digits only & cannot be negative number!";
 
         Exception exception = assertThrows(IllegalArgumentException.class,
@@ -81,25 +80,25 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_ShouldThrowIllegalArgumentException_IfDividendIsNull() {
+    void intDivision_ShouldThrowIllegalArgumentException_IfDividendIsNull() {
         String expected = "Input should be digits only & cannot be negative number!";
 
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> intDivision.divide(NULL, SMALL_POSITVE_INT));
+                () -> intDivision.divide(null, SMALL_POSITVE_INT));
         assertEquals(expected, exception.getMessage());
     }
 
     @Test
-    void IntDivision_ShouldThrowIllegalArgumentException_IfDivisorIsNull() {
+    void intDivision_ShouldThrowIllegalArgumentException_IfDivisorIsNull() {
         String expected = "Input should be digits only & cannot be negative number!";
 
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> intDivision.divide(SMALL_POSITVE_INT, NULL));
+                () -> intDivision.divide(SMALL_POSITVE_INT, null));
         assertEquals(expected, exception.getMessage());
     }
 
     @Test
-    void IntDivision_ShouldThrowIllegalArgumentException_IfZeroDivident() {
+    void intDivision_ShouldThrowIllegalArgumentException_IfZeroDivident() {
         String expected = "Input cannot be zero or negative number";
 
         Exception exception = assertThrows(IllegalArgumentException.class,
@@ -108,7 +107,7 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_ShouldThrowIllegalArgumentException_IfZeroDivisor() {
+    void intDivision_ShouldThrowIllegalArgumentException_IfZeroDivisor() {
         String expected = "Input cannot be zero or negative number";
 
         Exception exception = assertThrows(IllegalArgumentException.class,
@@ -117,7 +116,7 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_ShouldThrowIllegalArgumentException_IfNegativeDividend() {
+    void intDivision_ShouldThrowIllegalArgumentException_IfNegativeDividend() {
         String expected = "Input cannot be zero or negative number";
 
         Exception exception = assertThrows(IllegalArgumentException.class,
@@ -126,7 +125,7 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_ShouldThrowIllegalArgumentException_IfNegativeDivisor() {
+    void intDivision_ShouldThrowIllegalArgumentException_IfNegativeDivisor() {
         String expected = "Input cannot be zero or negative number";
 
         Exception exception = assertThrows(IllegalArgumentException.class,
@@ -135,7 +134,7 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_CheckTopOutputStrings_ForInputIsPositiveInts() {
+    void intDivision_CheckTopOutputStrings_ForInputIsPositiveInts() {
         String expected1 = "_1823000002|13";
         String expected2 = " 13        |---------";
         String expected3 = " --        |140230769";
@@ -146,7 +145,7 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_CheckLastOutputString_ForInputIsPositiveInts() {
+    void intDivision_CheckLastOutputString_ForInputIsPositiveInts() {
         String expected = "          5";
         result = intDivision.divide(BIG_POSITVE_INT, SMALL_POSITVE_INT);
         int resultLastIndex = result.size() - 1;
@@ -154,7 +153,7 @@ class IntDevisionTest {
     }
 
     @Test
-    void IntDivision_CheckLastOutputString_IfDividendIsSmallerThenDivisor() {
+    void intDivision_CheckLastOutputString_IfDividendIsSmallerThenDivisor() {
         String expected = " 13";
         result = intDivision.divide(SMALL_POSITVE_INT, BIG_POSITVE_INT);
         int resultLastStringIndex = result.size() - 1;

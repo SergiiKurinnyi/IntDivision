@@ -36,11 +36,7 @@ public class Calculator {
     }
 
     private DataObject createDTO(List<CalcData> dataList, int dividend, int divisor) {
-        DataObject data = new DataObject();
-        data.setDataList(dataList);
-        data.setDividend(dividend);
-        data.setDivisor(divisor);
-        return data;
+        return new DataObject(dataList, dividend, divisor);
     }
 
     private int[] getIntArrayFromString(String number) {
