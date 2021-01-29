@@ -6,22 +6,4 @@ Write an application integer-division that divides numbers and prints result int
 
 Example of result:
 
-_351000225|35
- 35       |--------
- --       |10028577
-  _100
-    70
-   ---
-   _300
-    280
-    ---
-    _202
-     175
-     ---
-     _272
-      245
-      ---
-      _275
-       245
-       ---
-        30
+https://ru-static.z-dn.net/files/d64/4b4632fc256ef403c7dc03c94bf84c11.png
