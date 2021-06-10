@@ -1,5 +1,4 @@
 # IntDivision
-Foxminded.com.ua Java Spring course
 
 Task 4 - Integer division
 
